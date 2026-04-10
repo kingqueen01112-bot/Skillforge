@@ -1,0 +1,49 @@
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes pulse {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.hero-content {
+    animation: fadeUp 0.8s ease 0.2s both;
+}
+
+.hero-card {
+    animation: fadeIn 0.8s ease 0.6s both;
+}
+
+.skill-cards:nth-child(1) {
+    animation: fadeUp 0.6s ease 0.1s both;
+}
+
+.skill-cards:nth-child(2) {
+    animation: fadeUp 0.6s ease 0.2s both;
+}
+
+.skill-cards:nth-child(3) {
+    animation: fadeUp 0.6s ease 0.3s both;
+}
+
+.skill-cards:nth-child(4) {
+    animation: fadeUp 0.6s ease 0.4s both;
+}
+
+.hero-cards .card:hover {
+    animation: pulse 1.2s ease infinite;
+}
