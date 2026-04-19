@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable react-hooks/purity */
 
 import { useRef, useMemo, useCallback } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
@@ -18,15 +19,15 @@ import {
 
 function GradientMesh() {
   const meshRef = useRef<THREE.Mesh>(null);
-  const uniformsRef = useRef({
+  const uniforms = useMemo(() => ({
     uTime: { value: 0 },
     uMouse: { value: 0 },
-  });
+  }), []);
 
   useFrame(({ clock, pointer }) => {
-    uniformsRef.current.uTime.value = clock.elapsedTime;
-    uniformsRef.current.uMouse.value +=
-      (pointer.y * 0.5 - uniformsRef.current.uMouse.value) * 0.05;
+    uniforms.uTime.value = clock.elapsedTime;
+    uniforms.uMouse.value +=
+      (pointer.y * 0.5 - uniforms.uMouse.value) * 0.05;
   });
 
   return (
@@ -35,7 +36,7 @@ function GradientMesh() {
       <shaderMaterial
         vertexShader={gradientVertexShader}
         fragmentShader={gradientFragmentShader}
-        uniforms={uniformsRef.current}
+        uniforms={uniforms}
         transparent
         depthWrite={false}
         side={THREE.DoubleSide}

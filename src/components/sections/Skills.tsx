@@ -100,7 +100,7 @@ export default function Skills() {
         <div>
           <FadeIn>
             <span className="inline-flex items-center gap-2 text-xs font-mono tracking-[3px] uppercase text-accent-indigo">
-              // Expertise
+              {"// Expertise"}
             </span>
           </FadeIn>
 

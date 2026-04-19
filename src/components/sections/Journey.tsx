@@ -26,7 +26,7 @@ export default function Journey() {
 
       <FadeIn>
         <span className="inline-flex items-center gap-2 text-xs font-mono tracking-[3px] uppercase text-accent-cyan">
-          // Journey
+          {"// Journey"}
         </span>
       </FadeIn>
 
