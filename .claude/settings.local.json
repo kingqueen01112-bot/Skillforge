@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/kingp/Desktop/full-stack/neelking/**)",
+      "Bash(mkdir -p skillforge_old)",
+      "Bash(cp -r skillforge/_old/* skillforge_old/)",
+      "Bash(rm -rf skillforge/_old)",
+      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --use-npm --no-turbopack)",
+      "Bash(npm install *)",
+      "Bash(npm uninstall *)",
+      "Bash(npm run *)"
+    ]
+  }
+}
