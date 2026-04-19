@@ -1,5 +1,6 @@
 "use client";
 /* eslint-disable react-hooks/purity */
+/* eslint-disable react-hooks/immutability */
 
 import { useRef, useMemo, useCallback } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
