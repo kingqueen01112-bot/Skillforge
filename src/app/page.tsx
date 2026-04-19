@@ -11,6 +11,8 @@ import Journey from "@/components/sections/Journey";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/sections/Footer";
 
+import { useGsapScrollTrigger } from "@/hooks/useGsapScrollTrigger";
+
 const CustomCursor = dynamic(() => import("@/components/ui/CustomCursor"), {
   ssr: false,
 });
@@ -20,6 +22,8 @@ const LoadingScreen = dynamic(() => import("@/components/ui/LoadingScreen"), {
 });
 
 export default function Home() {
+  useGsapScrollTrigger();
+
   return (
     <SmoothScroll>
       <LoadingScreen />

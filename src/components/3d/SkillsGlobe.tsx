@@ -65,7 +65,6 @@ function SkillLabel({
         color={color}
         anchorX="center"
         anchorY="middle"
-        font="/fonts/inter.woff"
         outlineWidth={0.01}
         outlineColor="#000000"
       >
@@ -94,14 +93,18 @@ function GlobeWireframe() {
   return (
     <group ref={wireRef}>
       {circles.map((geo, i) => (
-        <line key={i} geometry={geo} rotation={[0, (i * Math.PI) / 6, 0]}>
-          <lineBasicMaterial color="#6366f1" transparent opacity={0.06} />
-        </line>
+        <primitive
+          key={i}
+          object={new THREE.Line(geo, new THREE.LineBasicMaterial({ color: "#6366f1", transparent: true, opacity: 0.06 }))}
+          rotation={[0, (i * Math.PI) / 6, 0]}
+        />
       ))}
       {circles.slice(0, 3).map((geo, i) => (
-        <line key={`h-${i}`} geometry={geo} rotation={[Math.PI / 2, 0, (i * Math.PI) / 3]}>
-          <lineBasicMaterial color="#6366f1" transparent opacity={0.04} />
-        </line>
+        <primitive
+          key={`h-${i}`}
+          object={new THREE.Line(geo, new THREE.LineBasicMaterial({ color: "#6366f1", transparent: true, opacity: 0.04 }))}
+          rotation={[Math.PI / 2, 0, (i * Math.PI) / 3]}
+        />
       ))}
     </group>
   );

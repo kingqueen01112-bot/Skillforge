@@ -5,6 +5,7 @@ import { Suspense } from "react";
 import { motion } from "framer-motion";
 import TextReveal from "@/components/animations/TextReveal";
 import FadeIn from "@/components/animations/FadeIn";
+import AnimatedCounter from "@/components/animations/AnimatedCounter";
 import MagneticButton from "@/components/ui/MagneticButton";
 
 const HeroScene = dynamic(() => import("@/components/3d/HeroScene"), {
@@ -13,9 +14,9 @@ const HeroScene = dynamic(() => import("@/components/3d/HeroScene"), {
 });
 
 const stats = [
-  { value: "12+", label: "DAYS OF LEARNING" },
-  { value: "3+", label: "PROJECTS BUILT" },
-  { value: "4+", label: "SKILLS" },
+  { value: 12, label: "DAYS OF LEARNING" },
+  { value: 3, label: "PROJECTS BUILT" },
+  { value: 4, label: "SKILLS" },
 ];
 
 export default function Hero() {
@@ -70,7 +71,7 @@ export default function Hero() {
                   className="glass rounded-xl px-5 py-4 min-w-[120px] text-center group hover:border-accent-indigo/30 transition-all duration-300"
                 >
                   <p className="text-2xl font-bold font-heading gradient-text">
-                    {stat.value}
+                    <AnimatedCounter end={stat.value} suffix="+" duration={2000} />
                   </p>
                   <p className="text-[10px] tracking-[2px] uppercase text-text-muted mt-1">
                     {stat.label}
