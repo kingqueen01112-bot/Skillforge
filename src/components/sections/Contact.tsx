@@ -42,11 +42,11 @@ export default function Contact() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
         <FadeIn delay={0.3}>
           <div>
-            <h3 className="text-2xl font-bold font-heading mb-4">
+            <h3 className="text-2xl font-bold font-heading mb-4 text-white">
               Always open to{" "}
-              <span className="gradient-text">Conversations</span>
+              <span className="gradient-text-accent">Conversations</span>
             </h3>
-            <p className="text-text-muted leading-relaxed mb-8">
+            <p className="text-text-secondary leading-relaxed mb-8">
               I&apos;m a junior developer 12 days into a deliberate learning journey. If you want to give
               feedback on my projects, collaborate on something, or just say hello — I want to hear from you.
             </p>
@@ -56,15 +56,15 @@ export default function Contact() {
                 <FadeIn key={link.label} delay={0.4 + i * 0.1}>
                   <a
                     href={link.href}
-                    className="group flex items-center gap-4 glass rounded-xl p-4 hover:border-white/10 transition-all duration-300"
+                    className="group flex items-center gap-5 glass rounded-2xl p-4 hover:border-white/20 hover:bg-white/[0.02] transition-all duration-500"
                     data-cursor-hover
                   >
-                    <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-lg group-hover:bg-accent-indigo/10 transition-colors duration-300">
+                    <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/5 flex items-center justify-center text-xl text-text-secondary group-hover:text-white group-hover:border-white/20 transition-all duration-500">
                       {link.icon}
                     </div>
                     <div>
-                      <p className="text-xs text-text-muted uppercase tracking-wider">{link.label}</p>
-                      <p className="text-sm text-text-primary group-hover:text-accent-indigo transition-colors">
+                      <p className="text-[10px] font-mono text-text-muted uppercase tracking-[0.2em] mb-1">{link.label}</p>
+                      <p className="text-sm font-medium text-white group-hover:text-accent-indigo transition-colors duration-300">
                         {link.value}
                       </p>
                     </div>
@@ -78,16 +78,18 @@ export default function Contact() {
         <FadeIn delay={0.4} direction="left">
           <form
             onSubmit={(e) => e.preventDefault()}
-            className="glass rounded-2xl p-8 space-y-6"
+            className="glass rounded-3xl p-8 sm:p-10 space-y-6 relative overflow-hidden"
           >
+            <div className="absolute top-0 right-0 w-64 h-64 bg-accent-indigo/5 rounded-full blur-[80px] pointer-events-none" />
+
             {(["name", "email", "message"] as const).map((field) => (
-              <div key={field} className="relative">
+              <div key={field} className="relative z-10">
                 <label
                   htmlFor={field}
-                  className={`absolute left-4 transition-all duration-300 pointer-events-none font-mono text-xs uppercase tracking-wider ${
+                  className={`absolute left-4 transition-all duration-300 pointer-events-none font-mono uppercase tracking-wider ${
                     focused === field || formState[field]
-                      ? "-top-2.5 text-accent-indigo text-[10px] bg-surface px-1"
-                      : "top-4 text-text-muted"
+                      ? "-top-2.5 text-white/80 text-[10px] bg-[#0a0a0a] px-2 py-0.5 rounded-full"
+                      : "top-4 text-text-muted text-[11px]"
                   }`}
                 >
                   {field}
@@ -100,7 +102,7 @@ export default function Contact() {
                     onChange={(e) => setFormState((s) => ({ ...s, [field]: e.target.value }))}
                     onFocus={() => setFocused(field)}
                     onBlur={() => setFocused(null)}
-                    className="w-full bg-transparent border border-white/10 rounded-xl px-4 pt-5 pb-3 text-sm text-white focus:border-accent-indigo focus:outline-none transition-colors duration-300 resize-none"
+                    className="w-full bg-black/40 border border-white/10 rounded-2xl px-4 pt-5 pb-3 text-sm text-white focus:border-white/30 focus:bg-white/5 focus:outline-none transition-all duration-300 resize-none"
                   />
                 ) : (
                   <input
@@ -110,23 +112,23 @@ export default function Contact() {
                     onChange={(e) => setFormState((s) => ({ ...s, [field]: e.target.value }))}
                     onFocus={() => setFocused(field)}
                     onBlur={() => setFocused(null)}
-                    className="w-full bg-transparent border border-white/10 rounded-xl px-4 pt-5 pb-3 text-sm text-white focus:border-accent-indigo focus:outline-none transition-colors duration-300"
+                    className="w-full bg-black/40 border border-white/10 rounded-2xl px-4 pt-5 pb-3 text-sm text-white focus:border-white/30 focus:bg-white/5 focus:outline-none transition-all duration-300"
                   />
                 )}
               </div>
             ))}
 
             <MagneticButton
-              onClick={() => {}}
-              className="w-full py-4 rounded-xl font-medium text-white bg-accent-indigo hover:bg-accent-indigo/90 transition-all duration-300 relative overflow-hidden group"
+              className="w-full relative z-10 group flex items-center justify-center gap-3 px-8 py-5 rounded-2xl text-sm font-semibold text-[#050505] bg-white hover:bg-gray-200 transition-colors duration-300 overflow-hidden"
             >
               <span className="relative z-10">Send Message</span>
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-accent-indigo to-accent-pink"
-                initial={{ x: "-100%" }}
-                whileHover={{ x: "0%" }}
-                transition={{ duration: 0.3 }}
-              />
+              <motion.span
+                className="relative z-10 text-lg leading-none"
+                animate={{ x: [0, 4, 0] }}
+                transition={{ repeat: Infinity, duration: 1.5 }}
+              >
+                →
+              </motion.span>
             </MagneticButton>
           </form>
         </FadeIn>

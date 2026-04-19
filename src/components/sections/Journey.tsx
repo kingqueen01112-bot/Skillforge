@@ -77,29 +77,24 @@ export default function Journey() {
                   isLeft ? "md:flex-row" : "md:flex-row-reverse"
                 }`}>
                   <div className={`hidden md:block md:w-1/2 ${isLeft ? "md:pr-12 md:text-right" : "md:pl-12"}`}>
-                    <div className="glass rounded-2xl p-6 hover:border-white/10 transition-all duration-500 group">
+                    <div className="glass rounded-2xl p-8 hover:border-white/20 hover:bg-white/[0.02] transition-all duration-500 group">
                       <span
-                        className="text-xs font-mono font-bold tracking-[2px]"
+                        className="text-xs font-mono font-medium tracking-[2px] uppercase"
                         style={{ color: milestone.color }}
                       >
                         {milestone.day}
                       </span>
-                      <h3 className="text-lg font-bold font-heading mt-2 mb-2 group-hover:text-white transition-colors">
+                      <h3 className="text-2xl font-bold font-heading mt-3 mb-4 text-white group-hover:text-accent-indigo transition-colors duration-300">
                         {milestone.title}
                       </h3>
-                      <p className="text-sm text-text-muted leading-relaxed">
+                      <p className="text-sm text-text-secondary leading-relaxed">
                         {milestone.description}
                       </p>
-                      <div className={`flex flex-wrap gap-2 mt-4 ${isLeft ? "justify-end" : ""}`}>
+                      <div className={`flex flex-wrap gap-2 mt-6 ${isLeft ? "justify-end" : ""}`}>
                         {milestone.tags.map((tag) => (
                           <span
                             key={tag}
-                            className="px-2.5 py-0.5 text-[10px] font-mono rounded-full border"
-                            style={{
-                              borderColor: `${tagColors[tag]}30`,
-                              color: tagColors[tag],
-                              background: `${tagColors[tag]}08`,
-                            }}
+                            className="px-3 py-1.5 text-[11px] font-mono rounded-md border border-white/5 bg-black/40 text-text-secondary group-hover:border-white/10 transition-colors duration-300"
                           >
                             {tag}
                           </span>
@@ -108,26 +103,24 @@ export default function Journey() {
                     </div>
                   </div>
 
-                  <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full border-2 z-10"
+                  <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full border-2 border-background z-10 transition-all duration-500 hover:scale-125"
                     style={{
-                      borderColor: milestone.color,
-                      background: `${milestone.color}30`,
-                      boxShadow: `0 0 12px ${milestone.color}40`,
+                      background: milestone.color,
+                      boxShadow: `0 0 20px ${milestone.color}40`,
                     }}
                   />
 
-                  <div className="md:hidden pl-10">
-                    <span className="text-xs font-mono font-bold tracking-[2px]" style={{ color: milestone.color }}>
+                  <div className="md:hidden pl-12">
+                    <span className="text-xs font-mono font-medium tracking-[2px] uppercase" style={{ color: milestone.color }}>
                       {milestone.day}
                     </span>
-                    <h3 className="text-lg font-bold font-heading mt-1 mb-2">{milestone.title}</h3>
-                    <p className="text-sm text-text-muted leading-relaxed">{milestone.description}</p>
-                    <div className="flex flex-wrap gap-2 mt-3">
+                    <h3 className="text-xl font-bold font-heading mt-2 mb-3 text-white">{milestone.title}</h3>
+                    <p className="text-sm text-text-secondary leading-relaxed">{milestone.description}</p>
+                    <div className="flex flex-wrap gap-2 mt-5">
                       {milestone.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="px-2.5 py-0.5 text-[10px] font-mono rounded-full border"
-                          style={{ borderColor: `${tagColors[tag]}30`, color: tagColors[tag], background: `${tagColors[tag]}08` }}
+                          className="px-3 py-1.5 text-[11px] font-mono rounded-md border border-white/5 bg-black/40 text-text-secondary"
                         >
                           {tag}
                         </span>

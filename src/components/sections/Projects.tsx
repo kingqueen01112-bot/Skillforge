@@ -67,30 +67,30 @@ export default function Projects() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {projects.map((project, i) => (
           <FadeIn key={project.title} delay={0.1 + i * 0.15}>
-            <GlassCard className="h-full group hover:border-white/10 transition-all duration-500 relative overflow-hidden">
+            <GlassCard className="h-full group hover:border-white/20 hover:bg-white/[0.02] transition-all duration-500 relative overflow-hidden p-8">
               <div
-                className="absolute top-0 left-0 right-0 h-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                style={{ background: `linear-gradient(90deg, transparent, ${project.color}, transparent)` }}
+                className="absolute top-0 left-0 right-0 h-[1px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                style={{ background: `linear-gradient(90deg, transparent, ${project.color}80, transparent)` }}
               />
 
               <div className="relative z-10">
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs font-mono text-text-muted">{project.period}</span>
+                <div className="flex items-center justify-between mb-8">
+                  <span className="text-xs font-mono font-medium text-text-muted tracking-widest uppercase">{project.period}</span>
                   <motion.a
                     href="#"
-                    whileHover={{ rotate: -45 }}
-                    className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-text-muted hover:text-white hover:border-white/30 transition-colors"
+                    whileHover={{ rotate: -45, scale: 1.1 }}
+                    className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-text-secondary hover:text-white hover:border-white/30 hover:bg-white/10 transition-all duration-300"
                     data-cursor-hover
                   >
                     ↗
                   </motion.a>
                 </div>
 
-                <h3 className="text-xl font-bold font-heading mb-3 group-hover:text-white transition-colors">
+                <h3 className="text-2xl font-bold font-heading mb-4 text-white group-hover:text-accent-indigo transition-colors duration-300">
                   {project.title}
                 </h3>
 
-                <p className="text-sm text-text-muted leading-relaxed mb-6">
+                <p className="text-sm text-text-secondary leading-relaxed mb-8">
                   {project.description}
                 </p>
 
@@ -98,12 +98,7 @@ export default function Projects() {
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-3 py-1 text-xs font-mono rounded-full border transition-colors duration-300"
-                      style={{
-                        borderColor: `${tagColors[tag]}30`,
-                        color: tagColors[tag],
-                        background: `${tagColors[tag]}08`,
-                      }}
+                      className="px-3 py-1.5 text-[11px] font-mono rounded-md border border-white/5 bg-black/40 text-text-secondary group-hover:border-white/10 transition-colors duration-300"
                     >
                       {tag}
                     </span>

@@ -124,23 +124,24 @@ export default function Skills() {
           </FadeIn>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {skills.map((skill, i) => (
             <FadeIn key={skill.title} delay={0.1 + i * 0.1}>
-              <GlassCard className="h-full hover:border-white/10 transition-all duration-500 group">
+              <GlassCard className="h-full hover:border-white/20 hover:bg-white/[0.02] transition-all duration-500 group p-8">
                 <div
-                  className="w-10 h-10 rounded-xl flex items-center justify-center text-lg font-bold mb-4 transition-transform duration-300 group-hover:scale-110"
+                  className="w-12 h-12 rounded-2xl flex items-center justify-center text-xl font-bold mb-6 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3"
                   style={{
-                    background: `${skill.color}15`,
+                    background: `linear-gradient(135deg, ${skill.color}20, ${skill.color}05)`,
                     color: skill.color,
-                    boxShadow: `0 0 20px ${skill.color}10`,
+                    boxShadow: `0 0 30px ${skill.color}15`,
+                    border: `1px solid ${skill.color}30`
                   }}
                 >
                   {skill.title.charAt(0)}
                 </div>
-                <h3 className="text-xl font-bold font-heading">{skill.title}</h3>
-                <p className="text-xs text-text-muted mt-1 font-mono">{skill.count} Skills</p>
-                <div className="mt-4">
+                <h3 className="text-2xl font-bold font-heading text-white">{skill.title}</h3>
+                <p className="text-xs text-text-muted mt-2 font-mono tracking-widest uppercase">{skill.count} Skills</p>
+                <div className="mt-8 space-y-4">
                   {skill.items.map((item, j) => (
                     <SkillBar
                       key={item.name}
