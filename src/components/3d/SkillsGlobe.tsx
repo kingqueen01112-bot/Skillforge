@@ -111,11 +111,10 @@ function GlobeWireframe() {
   );
 }
 
-function GlobeDots() {
+function GlobeDots({ count = 200 }: { count?: number }) {
   const dotsRef = useRef<THREE.Points>(null);
 
   const positions = useMemo(() => {
-    const count = 200;
     const pos = new Float32Array(count * 3);
     for (let i = 0; i < count; i++) {
       const theta = Math.random() * Math.PI * 2;
@@ -126,7 +125,7 @@ function GlobeDots() {
       pos[i * 3 + 2] = r * Math.cos(phi);
     }
     return pos;
-  }, []);
+  }, [count]);
 
   return (
     <points ref={dotsRef}>
@@ -149,6 +148,7 @@ function RotatingGlobe() {
   const groupRef = useRef<THREE.Group>(null);
   const mouseSmooth = useRef({ x: 0, y: 0 });
   const positions = useMemo(() => fibonacciSphere(skills.length, 2.5), []);
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
 
   useFrame(({ clock, pointer }) => {
     if (!groupRef.current) return;
@@ -162,7 +162,7 @@ function RotatingGlobe() {
   return (
     <group ref={groupRef}>
       <GlobeWireframe />
-      <GlobeDots />
+      <GlobeDots count={isMobile ? 100 : 200} />
       {skills.map((skill, i) => (
         <Float key={skill.name} speed={0.5} floatIntensity={0.1}>
           <SkillLabel

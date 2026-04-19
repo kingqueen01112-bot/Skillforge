@@ -280,11 +280,14 @@ export default function HeroScene() {
     []
   );
 
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+  const particleCount = isMobile ? 400 : 1200;
+
   return (
     <div className="absolute inset-0 z-0">
       <Canvas
         camera={{ position: [0, 0, 6], fov: 55 }}
-        dpr={[1, 1.5]}
+        dpr={isMobile ? [1, 1] : [1, 1.5]}
         gl={{
           antialias: false,
           alpha: true,
@@ -299,11 +302,11 @@ export default function HeroScene() {
 
         <AdaptiveCamera />
         <GradientMesh />
-        <EnhancedParticles />
+        <EnhancedParticles count={particleCount} />
         <MorphingSphere />
         <FloatingTorus />
         <FloatingOctahedron />
-        <ConnectingLines />
+        {!isMobile && <ConnectingLines />}
         <PostProcessing />
       </Canvas>
     </div>

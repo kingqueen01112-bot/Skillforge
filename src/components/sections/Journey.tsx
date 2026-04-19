@@ -44,7 +44,25 @@ export default function Journey() {
       </FadeIn>
 
       <div className="relative">
-        <div className="absolute left-4 md:left-1/2 md:-translate-x-[0.5px] top-0 bottom-0 w-[1px] bg-gradient-to-b from-accent-indigo/50 via-accent-pink/50 to-accent-cyan/50" />
+        {/* SVG Path for GSAP ScrollTrigger to animate */}
+        <div className="absolute left-4 md:left-1/2 md:-translate-x-[0.5px] top-0 bottom-0 w-[2px]">
+          <svg className="w-full h-full" preserveAspectRatio="none" fill="none">
+            <path
+              className="timeline-path"
+              d="M1,0 L1,10000"
+              vectorEffect="non-scaling-stroke"
+              stroke="url(#timeline-gradient)"
+              strokeWidth="2"
+            />
+            <defs>
+              <linearGradient id="timeline-gradient" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#6366f1" stopOpacity="0.5" />
+                <stop offset="50%" stopColor="#ec4899" stopOpacity="0.5" />
+                <stop offset="100%" stopColor="#06b6d4" stopOpacity="0.5" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
 
         <div className="space-y-12">
           {milestones.map((milestone, i) => {
